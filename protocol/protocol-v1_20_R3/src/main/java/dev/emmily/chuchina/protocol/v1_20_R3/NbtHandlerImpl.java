@@ -41,6 +41,8 @@ public class NbtHandlerImpl
       compound.a(key, $string);
     } else if (value instanceof int[] $ints) {
       compound.a(key, $ints);
+    } else if (value instanceof Boolean $boolean) {
+      compound.a(key, $boolean);
     }
 
     return CraftItemStack.asBukkitCopy(copy);
@@ -160,6 +162,18 @@ public class NbtHandlerImpl
     }
 
     return compound.n(key);
+  }
+
+  @Override
+  public boolean getBoolean(ItemStack item,
+                            String key) {
+    NBTTagCompound compound = CraftItemStack.asNMSCopy(item).v();
+
+    if (compound == null) {
+      return false;
+    }
+
+    return compound.q(key);
   }
 
   @Override

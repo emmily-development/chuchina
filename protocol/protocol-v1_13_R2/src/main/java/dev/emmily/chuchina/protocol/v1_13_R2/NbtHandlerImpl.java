@@ -41,6 +41,8 @@ public class NbtHandlerImpl
       compound.setString(key, (String) value);
     } else if (value instanceof int[]) {
       compound.setIntArray(key, (int[]) value);
+    } else if (value instanceof Boolean) {
+      compound.setBoolean(key, (boolean) value);
     }
 
     return CraftItemStack.asBukkitCopy(copy);
@@ -152,6 +154,18 @@ public class NbtHandlerImpl
     }
 
     return compound.getIntArray(key);
+  }
+
+  @Override
+  public boolean getBoolean(ItemStack item,
+                            String key) {
+    NBTTagCompound compound = CraftItemStack.asNMSCopy(item).getTag();
+
+    if (compound == null) {
+      return false;
+    }
+
+    return compound.getBoolean(key);
   }
 
   @Override

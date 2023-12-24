@@ -163,6 +163,19 @@ public interface NbtHandler {
                     String key);
 
   /**
+   * Returns the {@code boolean[]} corresponding
+   * to the given {@code key}.
+   *
+   * @param item The item to get the
+   *             boolean from.
+   * @param key  The key of the boolean.
+   * @return The {@code boolean} corresponding
+   * to the given {@code key}.
+   */
+  boolean getBoolean(ItemStack item,
+                     String key);
+
+  /**
    * Removes the tag corresponding to
    * the given {@code key} from the
    * given {@code item}.
